@@ -68,28 +68,28 @@ function Header(props: HeaderProps) {
       { !isNil(rangeRowContent) && <HeaderRange content={rangeRowContent} /> }
       <Table.Row>
         <Table.HeaderCell style={cellStyle} colSpan='1'>
-          <Icon
+          {/* <Icon
             fitted
             style={prevPageBtnStyle}
             disabled={!hasPrevPage}
             onClick={hasPrevPage ? onPrevPageBtnClick : undefined}
-            name='chevron left' />
+            name='chevron left' /> */}
         </Table.HeaderCell>
 
         <Table.HeaderCell
-          onClick={onHeaderClick ? onHeaderClick : undefined}
+          // onClick={onHeaderClick ? onHeaderClick : undefined}
           style={cellStyle}
           colSpan={(width - 2).toString()}>
           <span style={headerTitleStyle}>{ title }</span>
         </Table.HeaderCell>
 
         <Table.HeaderCell style={cellStyle} colSpan='1'>
-          <Icon
+          {/* <Icon
             fitted
             style={nextPageBtnStyle}
             disabled={!hasNextPage}
             onClick={hasNextPage ? onNextPageBtnClick : undefined}
-            name='chevron right' />
+            name='chevron right' /> */}
         </Table.HeaderCell>
       </Table.Row>
       { displayWeeks && <HeaderWeeks localization={localization} /> }
