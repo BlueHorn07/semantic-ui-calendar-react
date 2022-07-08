@@ -26,6 +26,10 @@ export interface BaseCalendarViewProps {
   localization?: string;
 }
 
+export interface CustomProps {
+  markedHeatmap?: object;
+}
+
 export interface SingleSelectionCalendarViewProps {
   /** Position of a cell to display as active. */
   activeItemIndex?: number;

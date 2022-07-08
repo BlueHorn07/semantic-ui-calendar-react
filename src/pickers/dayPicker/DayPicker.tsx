@@ -17,6 +17,7 @@ import {
   MarkedValuesProps,
   ProvideHeadingValue,
   SingleSelectionPicker,
+  CustomProps,
 } from '../BasePicker';
 import {
   buildDays,
@@ -42,7 +43,8 @@ type DayPickerProps = BasePickerProps
   & DisableValuesProps
   & EnableValuesProps
   & MinMaxValueProps
-  & MarkedValuesProps;
+  & MarkedValuesProps
+  & CustomProps;
 
 class DayPicker
   extends SingleSelectionPicker<DayPickerProps>
@@ -67,6 +69,7 @@ class DayPicker
       minDate,
       maxDate,
       marked,
+      markedHeatmap,
       markColor,
       localization,
       ...rest
@@ -90,6 +93,7 @@ class DayPicker
         disabledItemIndexes={this.getDisabledPositions()}
         activeItemIndex={this.getActiveCellPosition()}
         markedItemIndexes={this.getMarkedPositions()}
+        markedHeatmap={markedHeatmap}
         markColor={markColor}
         localization={localization} />
     );

@@ -34,6 +34,9 @@ interface BodyProps {
   marked?: number[];
   /** The color of the mark that will be displayed on the calendar. */
   markColor?: string;
+
+  // Custom props
+  markedHeatmap?: object;
 }
 
 function Body(props: BodyProps) {
@@ -47,7 +50,11 @@ function Body(props: BodyProps) {
     onCellHover,
     marked,
     markColor,
+    markedHeatmap,
   } = props;
+
+  const maxValue = Math.max(...Object.values(markedHeatmap));
+
   const content = buildRows(data, width).map((row, rowIndex) => (
     <Table.Row key={`${rowIndex}${row[0]}`}>
       { row.map((item, itemIndex) => (
@@ -58,6 +65,8 @@ function Body(props: BodyProps) {
           disabled={isDisabled(rowIndex, width, itemIndex, disabled)}
           marked={isMarked(rowIndex, width, itemIndex, marked)}
           markColor={markColor}
+          heatmapValue={markedHeatmap[item] != null ? markedHeatmap[item] : 0}
+          maxValue={maxValue}
           key={`${rowIndex * width + itemIndex}`}
           itemPosition={rowIndex * width + itemIndex}
           content={item}

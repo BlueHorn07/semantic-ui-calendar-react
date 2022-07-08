@@ -136,6 +136,10 @@ export interface MarkedValuesProps {
   markColor?: SemanticCOLORS;
 }
 
+export interface CustomProps {
+  markedHeatmap?: object;
+}
+
 export const MarkedValuesPropTypes = {
   /** Array of marked dates. */
   marked: PropTypes.oneOfType([

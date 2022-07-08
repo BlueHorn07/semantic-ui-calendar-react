@@ -3,6 +3,7 @@ import * as React from 'react';
 import BaseCalendarView, {
   BaseCalendarViewProps,
   CalendarWithHeaderViewProps,
+  CustomProps,
   HeadingValueProps,
   SingleSelectionCalendarViewProps,
 } from './BaseCalendarView';
@@ -19,7 +20,8 @@ type DayViewProps =
   BaseCalendarViewProps
   & HeadingValueProps
   & SingleSelectionCalendarViewProps
-  & CalendarWithHeaderViewProps;
+  & CalendarWithHeaderViewProps
+  & CustomProps;
 
 class DayView extends BaseCalendarView<DayViewProps, any> {
   public render() {
@@ -40,6 +42,7 @@ class DayView extends BaseCalendarView<DayViewProps, any> {
       inline,
       markedItemIndexes,
       markColor,
+      markedHeatmap,
       localization,
       ...rest
     } = this.props;
@@ -66,6 +69,7 @@ class DayView extends BaseCalendarView<DayViewProps, any> {
           active={activeItemIndex}
           disabled={disabledItemIndexes}
           marked={markedItemIndexes}
+          markedHeatmap={markedHeatmap}
           markColor={markColor} />
       </Calendar>
     );

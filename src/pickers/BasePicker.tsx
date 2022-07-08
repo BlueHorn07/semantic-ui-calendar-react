@@ -90,6 +90,10 @@ export interface MarkedValuesProps {
   markColor?: SemanticCOLORS;
 }
 
+export interface CustomProps {
+  markedHeatmap?: object;
+}
+
 export interface TimePickerProps {
   timeFormat: TimeFormat;
 }

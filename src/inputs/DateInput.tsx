@@ -27,6 +27,7 @@ import BaseInput, {
   MultimodePropTypes,
   MarkedValuesProps,
   MarkedValuesPropTypes,
+  CustomProps
 } from './BaseInput';
 
 import {
@@ -73,6 +74,7 @@ export interface DateInputProps extends
   DisableValuesProps,
   EnableValuesProps,
   MarkedValuesProps,
+  CustomProps,
   MinMaxValueProps {
   /** Display mode to start. */
   startMode?: CalendarMode;
@@ -155,6 +157,7 @@ class DateInput extends BaseInput<DateInputProps, DateInputState> {
       closable,
       markColor,
       marked,
+      markedHeatmap, // custom props
       localization,
       onChange,
       ...rest
@@ -203,6 +206,7 @@ class DateInput extends BaseInput<DateInputProps, DateInputState> {
       enable,
       inline,
       marked,
+      markedHeatmap, // custom props
       markColor,
       localization,
       tabIndex,
@@ -248,7 +252,11 @@ class DateInput extends BaseInput<DateInputProps, DateInputState> {
       );
     }
 
-    return <DayPicker {...pickerProps} disable={disableParsed} marked={markedParsed} markColor={markColor} />;
+    return <DayPicker 
+              {...pickerProps} disable={disableParsed} 
+              marked={markedParsed} markColor={markColor} 
+              markedHeatmap={markedHeatmap}
+            />;
   }
 
   private switchToNextModeUndelayed = (): void => {

@@ -1,7 +1,7 @@
 import invoke from 'lodash/invoke';
 
 import * as React from 'react';
-import { Table, Label } from 'semantic-ui-react';
+import { Table, Label, Popup } from 'semantic-ui-react';
 
 import { OnValueClickData } from '../BaseCalendarView';
 
@@ -47,6 +47,10 @@ interface CellProps {
   marked?: boolean;
   /** Color of the mark. */
   markColor?: any;
+
+  // Custom props
+  heatmapValue?: number;
+  maxValue?: number;
 }
 
 class Cell extends React.Component<CellProps, any> {
@@ -60,6 +64,8 @@ class Cell extends React.Component<CellProps, any> {
       hovered,
       marked,
       markColor,
+      heatmapValue,
+      maxValue,
       ...rest
     } = this.props;
 
@@ -74,7 +80,23 @@ class Cell extends React.Component<CellProps, any> {
         style={cellStyle}
         onMouseOver={this.onCellHover}
         onClick={this.onCellClick}>
-        { (marked && !rest.disabled) ? <Label circular color={markColor} key={content}>{content}</Label>
+        { (marked && !rest.disabled) ? (
+            (maxValue && heatmapValue) ? (
+              <Popup 
+                inverted
+                content={heatmapValue}
+                trigger={
+                  <Label circular color={markColor} key={content} style={{opacity: heatmapValue / maxValue + 0.2}}>
+                    {content}
+                  </Label>
+                }
+              />
+            ) : (
+              <Label circular color={markColor} key={content}>
+                {content}
+              </Label>
+            )
+         )
           : <span className = 'suicr-content-item'>{content}</span> }
       </Table.Cell>
     );
